@@ -5,12 +5,8 @@ import os
 import datetime
 from datetime import datetime, timedelta
 
-def create_cross_read_replica(trds_id,tregion):
-    print(f'Creating new cross region read replica {trds_id} in AWS region {tregion} .')
-
 def promote_rr(rds_id,sregion):
 
-    #print(f'Promoting the reader {rds_id}')
     rds_client = boto3.client("rds",region_name=sregion)
     promo_status=0
     try:
@@ -113,7 +109,6 @@ def lambda_handler(event, context):
 
                     if promote_results == 1:
                         print (f'{vSDBIdentifier} has been successfully promoted as new primary!')
-                        print (f'Calling Failover function to inititate Route53 failover to secondary region ({vSregion})....')
                     else:
                         print(f'Promotion of reader node {vSDBIdentifier} not completed or initiated, please verify the replica status manually and complete next steps to complete the failover manually.')
             else:
