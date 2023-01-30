@@ -77,8 +77,6 @@ def lambda_handler(event, context):
 
     vPDBIdentifier = os.environ['PRIMARY_DB_IDENTIFIER']
     vSDBIdentifier = os.environ['REPLICA_DB_IDENTIFIER']
-    vNRRIdentifier = os.environ['NEW_REPLICA_IDENTIFIER']
-    vHostedZoneId = os.environ['HOSTED_ZONE_ID']
     vRRLag = os.environ['ACCEPTABLE_RR_LAG_SECONDS']
     vPregion = os.environ['PRIMARY_REGION']
     vSregion = os.environ['SECONDARY_REGION']
